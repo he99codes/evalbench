@@ -1,0 +1,65 @@
+{
+  "project": {
+    "name": "Demo: Customer Support Replies",
+    "description": "Seeded demo project. Compares candidate customer-support replies against a shared rubric."
+  },
+  "criteria": [
+    {
+      "name": "Instruction Following",
+      "description": "Does the response do every task the prompt explicitly asks for?",
+      "weight": 1.5
+    },
+    {
+      "name": "Constraint Compliance",
+      "description": "Does the response respect every hard constraint in the prompt, such as length limits, forbidden content and required format?",
+      "weight": 1.5
+    },
+    {
+      "name": "Accuracy",
+      "description": "Are the statements consistent with the facts given in the prompt, without invented details, dates or commitments?",
+      "weight": 1.0
+    },
+    {
+      "name": "Relevance",
+      "description": "Does the response stay focused on the customer's issue without unnecessary tangents?",
+      "weight": 1.0
+    },
+    {
+      "name": "Clarity",
+      "description": "Is the response easy to read, with short, unambiguous sentences?",
+      "weight": 1.0
+    },
+    {
+      "name": "Completeness",
+      "description": "Does the response cover everything the customer needs to know to resolve the issue?",
+      "weight": 1.0
+    },
+    {
+      "name": "Conciseness",
+      "description": "Is the response free of filler and no longer than it needs to be?",
+      "weight": 0.5
+    },
+    {
+      "name": "Tone",
+      "description": "Is the tone friendly, empathetic and professional?",
+      "weight": 1.0
+    }
+  ],
+  "evaluation_weight_overrides": {
+    "_comment": "Polish-heavy rubric for the demo evaluation only (project defaults stay balanced). It over-rewards tone and completeness, so the reward-mismatch check has something to catch.",
+    "Instruction Following": 1.0,
+    "Constraint Compliance": 0.5,
+    "Accuracy": 0.5,
+    "Relevance": 1.0,
+    "Clarity": 1.5,
+    "Completeness": 2.0,
+    "Conciseness": 0.25,
+    "Tone": 2.5
+  },
+  "evaluation": {
+    "title": "Duplicate charge refund reply (polish-heavy rubric)",
+    "prompt": "A customer named Jordan writes: \"I was charged twice for order #4821 and I want my money back.\"\n\nWrite a reply to Jordan. The reply must apologize for the double charge, confirm that the duplicate charge will be refunded to the original payment method, and offer a $10 store credit as a goodwill gesture. Keep the reply under 120 words. Do not promise a specific refund timeline or date. Use a friendly, professional tone.",
+    "response_a": "Hi Jordan,\n\nThank you so much for reaching out, and I am truly sorry for the frustration this double charge has caused you! We completely understand how stressful it is to see an unexpected charge on your statement, especially when you were simply trying to enjoy your purchase. I have personally reviewed order #4821 and confirmed that the second charge was a duplicate caused by a payment processing error on our side. Great news: your refund for the duplicate charge will be processed within 3 business days, and you will see it back on your original payment method by Friday at the latest. As a thank-you for your patience, we have also added a $10 store credit to your account, which you can use on any future order. We truly value you as a customer and appreciate your understanding. If there is anything else at all that we can do to make this right, please do not hesitate to reach out to us anytime!\n\nWarm regards,\nThe Customer Care Team",
+    "response_b": "Hi Jordan,\n\nI'm sorry you were charged twice for order #4821. The duplicate charge will be refunded to your original payment method. As an apology for the inconvenience, we've added a $10 store credit to your account. If you have any questions, just reply to this email.\n\nBest regards,\nCustomer Support"
+  }
+}
